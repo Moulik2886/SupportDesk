@@ -1,0 +1,21 @@
+{
+  "name": "supportdesk",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "node server/dev.js",
+    "dev:stack": "concurrently -k -n api,web -c cyan,magenta \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace @supportdesk/server",
+    "dev:web": "npm run dev --workspace @supportdesk/client",
+    "build": "npm run build --workspace @supportdesk/client",
+    "test:api": "npm run test:api --workspace @supportdesk/server",
+    "start": "npm run start --workspace @supportdesk/server"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
+    "@electric-sql/pglite-socket": "^0.2.13",
+    "concurrently": "^9.2.1"
+  },
+  "engines": { "node": ">=20.19.0" }
+}
